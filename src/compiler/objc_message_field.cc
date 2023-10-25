@@ -107,9 +107,7 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
   }
 
   void MessageFieldGenerator::GenerateInitializationSource(io::Printer* printer) const {
-    printer->Print(variables_, "_$name$ = nil;\n");
   }
-
 
   void MessageFieldGenerator::GenerateBuilderMembersHeader(io::Printer* printer) const {
     printer->Print(variables_,
