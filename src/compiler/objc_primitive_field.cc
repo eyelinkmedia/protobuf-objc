@@ -271,6 +271,8 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
     }
   }
 
+  void PrimitiveFieldGenerator::GenerateIvarSource(io::Printer* printer) const {
+  }
 
   void PrimitiveFieldGenerator::GenerateSynthesizeSource(io::Printer* printer) const {
   }
@@ -465,6 +467,8 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
     }
   }
 
+  void RepeatedPrimitiveFieldGenerator::GenerateIvarSource(io::Printer* printer) const {
+  }
 
   void RepeatedPrimitiveFieldGenerator::GenerateSynthesizeSource(io::Printer* printer) const {
   }

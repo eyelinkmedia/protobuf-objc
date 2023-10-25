@@ -48,6 +48,7 @@ class PrimitiveFieldGenerator : public FieldGenerator {
   void GenerateBuilderClearHeader(io::Printer* printer) const;
 
   void GenerateExtensionSource(io::Printer* printer) const;
+  void GenerateIvarSource(io::Printer* printer) const;
   void GenerateSynthesizeSource(io::Printer* printer) const;
   void GenerateInitializationSource(io::Printer* printer) const;
   void GenerateMembersSource(io::Printer* printer) const;
@@ -90,6 +91,7 @@ class RepeatedPrimitiveFieldGenerator : public FieldGenerator {
   void GenerateBuilderClearHeader(io::Printer* printer) const;
 
   void GenerateExtensionSource(io::Printer* printer) const;
+  void GenerateIvarSource(io::Printer* printer) const;
   void GenerateSynthesizeSource(io::Printer* printer) const;
   void GenerateInitializationSource(io::Printer* printer) const;
   void GenerateMembersSource(io::Printer* printer) const;

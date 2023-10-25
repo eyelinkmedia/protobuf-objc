@@ -94,18 +94,20 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
 
   void MessageFieldGenerator::GenerateExtensionSource(io::Printer* printer) const {
     printer->Print(variables_,"@property (nonatomic, readwrite) BOOL has$capitalized_name$;\n");
-    printer->Print(variables_,"@property (nonatomic, readwrite)$storage_attribute$ $storage_type$ $name$;\n");
+  }
+
+  void MessageFieldGenerator::GenerateIvarSource(io::Printer* printer) const {
+    printer->Print(variables_,"  $storage_attribute$ $storage_type$ _$name$;\n");
   }
 
   void MessageFieldGenerator::GenerateMembersHeader(io::Printer* printer) const {
   }
 
-
   void MessageFieldGenerator::GenerateSynthesizeSource(io::Printer* printer) const {
   }
 
   void MessageFieldGenerator::GenerateInitializationSource(io::Printer* printer) const {
-    printer->Print(variables_, "self.$name$ = [$type$ defaultInstance];\n");
+    printer->Print(variables_, "_$name$ = nil;\n");
   }
 
 
@@ -259,6 +261,17 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
   }
 
   void MessageFieldGenerator::GenerateMembersSource(io::Printer* printer) const {
+    printer->Print(variables_,
+      "- (void) set$capitalized_name$:($storage_type$) value {\n"
+      "  _$name$ = value;\n"
+      "}\n");
+    printer->Print(variables_,
+      "- ($storage_type$) $name$ {\n"
+      "  if (_$name$ == nil) {\n"
+      "    _$name$ = [$type$ defaultInstance];\n"
+      "  }\n"
+      "  return _$name$;\n"
+      "}\n");
   }
 
   string MessageFieldGenerator::GetBoxedType() const {
@@ -314,6 +327,8 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
 		}
   }
 
+  void RepeatedMessageFieldGenerator::GenerateIvarSource(io::Printer* printer) const {
+  }
 
   void RepeatedMessageFieldGenerator::GenerateSynthesizeSource(io::Printer* printer) const {
   }

@@ -53,6 +53,7 @@ class FieldGenerator {
   virtual void GenerateBuilderClearHeader(io::Printer* printer) const = 0;
 
   virtual void GenerateExtensionSource(io::Printer* printer) const = 0;
+  virtual void GenerateIvarSource(io::Printer* printer) const = 0;
   virtual void GenerateSynthesizeSource(io::Printer* printer) const = 0;
   virtual void GenerateInitializationSource(io::Printer* printer) const = 0;
   virtual void GenerateMembersSource(io::Printer* printer) const = 0;

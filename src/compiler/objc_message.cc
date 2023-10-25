@@ -317,8 +317,14 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
     }
     printer->Print("@end\n\n");
 
-    printer->Print("@implementation $classname$\n\n",
+    printer->Print("@implementation $classname$ {\n",
       "classname", ClassName(descriptor_));
+
+    for (int i = 0; i < descriptor_->field_count(); i++) {
+      field_generators_.get(descriptor_->field(i)).GenerateIvarSource(printer);
+    }
+
+    printer->Print("}\n\n");
 
     for (int i = 0; i < descriptor_->field_count(); i++) {
       field_generators_.get(descriptor_->field(i)).GenerateSynthesizeSource(printer);

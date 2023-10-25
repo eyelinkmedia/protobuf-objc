@@ -86,6 +86,8 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
     printer->Print(variables_,"@property (nonatomic, readwrite) $type$ $name$;\n");
   }
 
+  void EnumFieldGenerator::GenerateIvarSource(io::Printer* printer) const {
+  }
 
   void EnumFieldGenerator::GenerateMembersHeader(io::Printer* printer) const {
   }
@@ -278,6 +280,9 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
 			printer->Print(variables_,
 		      "@property (nonatomic, readwrite) PBAppendableArray * $list_name$;\n");
 		}
+  }
+
+  void RepeatedEnumFieldGenerator::GenerateIvarSource(io::Printer* printer) const {
   }
 
   void RepeatedEnumFieldGenerator::GenerateSynthesizeSource(io::Printer* printer) const {
