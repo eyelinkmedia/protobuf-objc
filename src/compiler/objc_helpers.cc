@@ -289,6 +289,11 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
   string ClassName(const Descriptor* descriptor) {
     string name;
     name += FileClassPrefix(descriptor->file());
+
+    if (needsExtendedPrefix(descriptor->name())) {
+      name += "Proto";
+    }
+
     name += ClassNameWorker(descriptor);
     return name;
   }
@@ -297,6 +302,11 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
   string ClassName(const EnumDescriptor* descriptor) {
     string name;
     name += FileClassPrefix(descriptor->file());
+
+    if (needsExtendedPrefix(descriptor->name())) {
+      name += "Proto";
+    }
+
     name += ClassNameWorker(descriptor);
     return name;
   }
@@ -607,6 +617,9 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
   }
   bool isDummyMessage(string classname) {
     return hasClassSpecificFeature(classname, "PROTOC_GEN_OBJC_DUMMY_MESSAGES");
+  }
+  bool needsExtendedPrefix(string classname) {
+    return hasClassSpecificFeature(classname, "PROTOC_GEN_OBJC_CLASSES_WITH_EXTENDED_PREFIX");
   }
 
   // Escape C++ trigraphs by escaping question marks to \?

@@ -119,6 +119,7 @@ bool hasPartiallyMerge(string classname);
 bool hasBuilderClearMethods(string classname);
 bool hasBuilderGetterInHeader(string classname);
 bool isDummyMessage(string classname);
+bool needsExtendedPrefix(string classname);
 
 // Escape C++ trigraphs by escaping question marks to \?
 string EscapeTrigraphs(const string& to_escape);
