@@ -290,7 +290,6 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
     string name;
     name += FileClassPrefix(descriptor->file());
 
-    // Add "Proto" for classes that conflict with system frameworks
     if (needsExtendedPrefix(descriptor->name())) {
       name += "Proto";
     }
@@ -304,7 +303,6 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
     string name;
     name += FileClassPrefix(descriptor->file());
 
-    // Add "Proto" for classes that conflict with system frameworks
     if (needsExtendedPrefix(descriptor->name())) {
       name += "Proto";
     }
